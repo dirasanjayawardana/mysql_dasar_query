@@ -12,3 +12,9 @@
 - SQL merupakan perintah standar yang digunakan untuk melakukan management data
 - SQL adalah bahasa yang digunakan untuk mengirim perintah ke DBMS
 - Cara masuk MySQL via terminal di windows `mysql -uroot -p`, pastikan sudah menambahkan path bin directory MySQL di environment variabel, pastikan MySQL sudah di running di service
+
+### Database
+- `SHOW DATABASES;` melihat semua database
+- `CREATE DATABASE nama_database;` membuat database baru
+- `DROP DATABASE nama_database;` menghapus database
+- `USE nama_database` memilih database/masuk ke database
