@@ -13,8 +13,40 @@
 - SQL adalah bahasa yang digunakan untuk mengirim perintah ke DBMS
 - Cara masuk MySQL via terminal di windows `mysql -uroot -p`, pastikan sudah menambahkan path bin directory MySQL di environment variabel, pastikan MySQL sudah di running di service
 
-### Database
+## Database
 - `SHOW DATABASES;` melihat semua database
 - `CREATE DATABASE nama_database;` membuat database baru
 - `DROP DATABASE nama_database;` menghapus database
-- `USE nama_database` memilih database/masuk ke database
+- `USE nama_database;` memilih database/masuk ke database
+
+### Tipe Data Number
+- `Integer` TINYINT(1 Byte), SMALLINT(2 Byte), MEDIUMINT(3 Byte), INT(4 Byte), BIGINT(8 Byte)
+- `Floating Point` FLOAT(4 Byte), DOUBLE(8 Byte)
+- `DECIMAL(length, scale)` Tipe data number yang bisa diatur berapa digitnya dan berapa angka belakang koma
+- `TIPEDATANYA(N)` Membuat tipe data number sejumlah N digit
+- `ZEROFILL` akan mengisi digit otomatis dengan 0, contoh `INT(3) ZEROFILL` maka angka 1 akan ditampilkan 001
+
+### Tipe Data String
+- `CHAR(N)` atau `VARCHAR(N)` Membuat tipe data String dengan panjang karakter tertentu, maksimalnya 65535 karakter
+- Bedanya antara CHAR dan VARCHAR adalah pada ukuran penyimpanannya, pada `CHAR(4)` jika ukuran didefinisikan 4 karakter, maka akan memakan space sebesar 4 bytes, meskipun tidak diisi, sedangkan pada `VARCHAR(4)` meskipun didefinisikan 4 karakter, akan memakan space sesuai isinya, jika isinya hanya 1 karakter, hanya akan memakan space 1 byte
+- `TEXT` TINYTEXT(maks 255 karakter), TEXT(maks 65535 karakter), MEDIUMTEXT(maks 16MB), LONGTEXT(maks 4GB)
+- `ENUM` Merupakan tipe data String yang bisa ditentukan pilihan isinya, contoh `ENUM('Pria', 'Wanita')`
+
+### Tipe Data Date and Time
+- `DATE` YYYY-MM-DD
+- `DATETIME` YYYY-MM-DD HH:MM:SS
+- `TIMESTAMP` YYYY-MM-DD HH:MM:SS, TIMESTAMP leih ditujukan untuk informasi tambahan
+- `TIME` HH:MM:SS
+- `YEAR` YYYY
+
+### Tipe Data Boolean
+- `BOOLEAN` true or false, bisa juga TRUE or FALSE
+- Di MySQL tidak case sensitive
+
+## Table
+- `SHOW ENGINES;` untuk melihat storage engine yg terdapat di MySQL, defaultnya `InnoDB`
+- `SHOW TABLES;` melihat semua tabel
+- `CREATE TABLE nama_table` membuat tabel
+- `DESCRIBE nama_tabel` atau `DESC nama_table` melihat struktur tabel
+- `SHOW CREATE TABLE nama_table` melihat struktur tabel dalam sintaks pembuatan tabel
+- `ALTER TABLE nama_tabel` mengubah struktur tabel
