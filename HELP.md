@@ -43,10 +43,7 @@
 - `BOOLEAN` true or false, bisa juga TRUE or FALSE
 - Di MySQL tidak case sensitive
 
-## Table
-- `SHOW ENGINES;` untuk melihat storage engine yg terdapat di MySQL, defaultnya `InnoDB`
-- `SHOW TABLES;` melihat semua tabel
-- `CREATE TABLE nama_table` membuat tabel
-- `DESCRIBE nama_tabel` atau `DESC nama_table` melihat struktur tabel
-- `SHOW CREATE TABLE nama_table` melihat struktur tabel dalam sintaks pembuatan tabel
-- `ALTER TABLE nama_tabel` mengubah struktur tabel
+
+## Learning
+- barang.sql
+- products.sql
