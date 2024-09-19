@@ -51,6 +51,7 @@ INSERT INTO products(id, name, price, quantity)
 VALUES ('P0001', 'Mie Ayam Original', 15000, 100);
 
 -- mengambil data sesuai dengan filter WHERE
+-- pada MySql defaultnya case insensitive (tidak memperdulikan huruf besar atau kecil)
 SELECT *
 FROM products
 WHERE quantity = 100;
@@ -91,6 +92,7 @@ SET category    = 'Makanan',
     description = 'Mie Ayam Original + Ceker'
 WHERE id = 'P0003';
 
+-- update isi tabel dengan mengambil exsisting data sebelumnya
 UPDATE products
 SET price = price + 5000
 WHERE id = 'P0005';
