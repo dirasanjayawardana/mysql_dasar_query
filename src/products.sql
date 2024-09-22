@@ -113,6 +113,7 @@ SELECT id       AS Kode,
        quantity AS Jumlah
 FROM products;
 
+-- menggunakan alias tabel
 SELECT p.id       AS Kode,
        p.name     AS Nama,
        p.category AS Kategori,
@@ -132,6 +133,7 @@ VALUES ('P0006', 'Makanan', 'Bakso Rusuk', 25000, 200),
        ('P0014', 'Makanan', 'Bakso Telor', 20000, 150),
        ('P0015', 'Makanan', 'Bakso Jando', 25000, 300);
 
+-- operator perbandingan (>, >=, != atau <>, <, <=)
 SELECT *
 FROM products
 WHERE quantity > 100;
@@ -148,6 +150,7 @@ SELECT *
 FROM products
 WHERE category <> 'Minuman';
 
+-- operator AND & OR (menggabungkan dua atau lebih operator, secara default AND menjadi prioritas utama yang dieksekusi, untuk merubah prioritas eksekusi, bisa gunakan tanda ())
 SELECT *
 FROM products
 WHERE quantity > 100
@@ -168,6 +171,7 @@ FROM products
 WHERE (category = 'Makanan' OR quantity > 500)
   AND price > 20000;
 
+-- operator LIKE & NOT LIKE (mencari data yang mengandung isi String dari LIKE, operator ini lambat, tidak disarankan untuk data besar, operator ini tidak case sensitive)
 SELECT *
 FROM products
 WHERE name LIKE '%mie%';
@@ -178,8 +182,9 @@ WHERE name LIKE '%bakso%';
 
 SELECT *
 FROM products
-WHERE name LIKE '%usu%';
+WHERE name NOT LIKE '%bakso%';
 
+-- operator IS NULL & IS NOT NULL (digunakan khusus untuk mengecek data NULL)
 SELECT *
 FROM products
 WHERE description IS NULL;
@@ -188,6 +193,7 @@ SELECT *
 FROM products
 WHERE description IS NOT NULL;
 
+-- operator BETWEEN & NOT BETWEEN (mencari data >= dan <= pada range tertentu)
 SELECT *
 FROM products
 WHERE price BETWEEN 10000 AND 20000;
@@ -196,6 +202,7 @@ SELECT *
 FROM products
 WHERE price NOT BETWEEN 10000 AND 20000;
 
+-- operator IN & NOT IN (mencari data dari sekumpulan beberapa nilai)
 SELECT *
 FROM products
 WHERE category IN ('Makanan', 'Minuman');
@@ -204,6 +211,7 @@ SELECT *
 FROM products
 WHERE category NOT IN ('Makanan', 'Minuman');
 
+-- ORDER BY ASC & ORDER BY DESC (mengurutkan data berdasarkan kolom yang dipilih, bisa diurutkan dengan mengacu pada beberapa kolom, defaultnya ASC)
 SELECT id, category, name
 FROM products
 ORDER BY category;
@@ -212,6 +220,7 @@ SELECT id, category, price, name
 FROM products
 ORDER BY category ASC, price DESC;
 
+-- LIMIT jumlah & LIMIT skip, jumlah (membatasi jumlah data yang diambil, dan men-skip data yang tidak ingin diambil atau disebut dengan OFFSET)
 SELECT *
 FROM products
 ORDER BY id
@@ -237,25 +246,23 @@ FROM products
 ORDER BY id
 LIMIT 10, 5;
 
-SELECT *
-FROM products
-ORDER BY id
-LIMIT 15, 5;
-
+-- DISTINC (mengambil data dengan menghilangkan data yg duplikat dari hasil query)
 SELECT DISTINCT category
 FROM products;
 
+-- Arithmetic Operator (%, MOD, *, +, -, / (pembagian yg hasilnya bisa Float), DIV (pembagian yg hasilnya akan selalu Integer))
 SELECT 10, 10, 10 * 10 as Hasil;
 
 SELECT id, name, price, price DIV 1000 AS 'Price in K'
 FROM products;
 
+-- Mathematical Function (fungsi untuk mengitung nilai, SIN(), COS(), TAN(), ABS(), LN(), PI(), MOD(), LOG(), POWER(nilai, pangkat), LOWER(), UPPER(), LENGTH(), EXTRACT() dll)
 SELECT id, COS(price), SIN(price), TAN(price)
 FROM products;
 
 SELECT id, name, price
 FROM products
-WHERE price DIV 1000 > 15;
+WHERE (price DIV 1000) > 15;
 
 SELECT id,
        LOWER(name)  as 'Name Lower',
@@ -278,7 +285,7 @@ SELECT id,
            WHEN 'Makanan' THEN 'Enak'
            WHEN 'Minuman' THEN 'Segar'
            ELSE 'Apa Itu?'
-           END AS 'Category'
+       END AS 'Category'
 FROM products;
 
 SELECT id,
