@@ -49,3 +49,4 @@
 - products.sql
 - admin.sql
 - customers.sql
+- sellers.sql
