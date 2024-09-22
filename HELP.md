@@ -47,3 +47,5 @@
 ## Learning
 - barang.sql
 - products.sql
+- admin.sql
+- customers.sql

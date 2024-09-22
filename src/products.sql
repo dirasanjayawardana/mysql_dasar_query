@@ -256,7 +256,7 @@ SELECT 10, 10, 10 * 10 as Hasil;
 SELECT id, name, price, price DIV 1000 AS 'Price in K'
 FROM products;
 
--- Mathematical Function (fungsi untuk mengitung nilai, SIN(), COS(), TAN(), ABS(), LN(), PI(), MOD(), LOG(), POWER(nilai, pangkat), LOWER(), UPPER(), LENGTH(), EXTRACT() dll)
+-- Mathematical Function (fungsi untuk mengitung nilai, SIN(), COS(), TAN(), ABS(), LN(), PI(), MOD(), LOG(), POWER(nilai, pangkat), dll)
 SELECT id, COS(price), SIN(price), TAN(price)
 FROM products;
 
@@ -264,12 +264,14 @@ SELECT id, name, price
 FROM products
 WHERE (price DIV 1000) > 15;
 
+-- String Function (untuk manipulasi data String, LOWER(), UPPER(), LENGTH(), TRIM(), dll)
 SELECT id,
        LOWER(name)  as 'Name Lower',
-       UPPER(name)  as 'Name Lower',
+       UPPER(name)  as 'Name Upper',
        LENGTH(name) as 'Name Length'
 FROM products;
 
+-- Date and Time Function (untuk manipulasi data waktu, EXTRACT(), YEAR(), MONTH())
 SELECT id,
        created_at,
        EXTRACT(YEAR FROM created_at)  as Year,
@@ -279,6 +281,7 @@ FROM products;
 SELECT id, created_at, YEAR(created_at), MONTH(created_at)
 FROM products;
 
+-- Percabangan CASE WHEN THEN (mirip switch case)
 SELECT id,
        category,
        CASE category
@@ -288,14 +291,20 @@ SELECT id,
        END AS 'Category'
 FROM products;
 
+-- Percabangan IF(kondisi, value, nextIf/else)
 SELECT id,
        price,
-       IF(price <= 15000, 'Murah', IF(price <= 20000, 'Mahal', 'Mahal Banget')) as 'Mahal?'
+       IF(price <= 15000, 'Murah', 
+       IF(price <= 20000, 'Mahal', 
+       'Mahal Banget')) as 'Mahal?'
 FROM products;
 
+-- IFNULL(data, value) (mengecek apakah data NULL, jika NULL maka akan diisi dengan value)
 SELECT id, name, IFNULL(description, 'Kosong')
 FROM products;
 
+-- Aggregate Function - memperoleh suatu data dari beberapa data (COUNT(), MAX(), MIN(), AVG(), SUM())
+-- Ketika menggunakan Aggregate Function, tidak bisa digabungkan dengan SELECT kolom lainnya, kecuali menggunakan GROUP BY
 SELECT COUNT(id) as 'Total Product'
 FROM products;
 
@@ -311,9 +320,11 @@ FROM products;
 SELECT SUM(quantity) AS 'Total Stock'
 FROM products;
 
-SELECT COUNT(id) as 'Total Product', category
+-- GROUP BY (mengelompokkan data berdasarkan kriteria tertentu, data yang sama akan dianggap sebagai satu group)
+-- GROUP BY hanya bisa dilakukan ketika menggunakan Aggregate Function
+SELECT COUNT(id) as 'Total Product', category, price
 FROM products
-GROUP BY category;
+GROUP BY category, price;
 
 SELECT MAX(price) as 'Product Termahal', category
 FROM products
@@ -331,11 +342,12 @@ SELECT SUM(quantity) AS 'Total Stock', category
 FROM products
 GROUP BY category;
 
+-- HAVING (untuk melakukan filter data sesuai dengan hasil Aggregate Function)
 SELECT COUNT(id) as total,
        category
 FROM products
 GROUP BY category
-HAVING total > 5;
+HAVING total > 2;
 
 SELECT *
 FROM products;
@@ -347,6 +359,9 @@ UPDATE products
 SET price = 1000
 WHERE id = 'P0016';
 
+-- CONSTRAINT nama_constraint JENISCONSTRAINT (menambahkan validasi untuk setiap data yang masuk)
+-- UNIQUE (kolom)
+-- CHECK (kondisi)
 ALTER TABLE products
     ADD CONSTRAINT price_check CHECK ( price >= 1000 );
 
