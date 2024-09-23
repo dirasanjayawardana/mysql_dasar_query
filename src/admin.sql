@@ -1,3 +1,5 @@
+USE belajar_mysql;
+
 -- Auto Increment (mengisi Primary Key secara otomatis dengan angka terakhir +1, AUTO_INCREMENT hanya bisa digunakan di Primary Key)
 CREATE TABLE admin
 (

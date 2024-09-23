@@ -1,3 +1,5 @@
+USE belajar_mysql;
+
 -- membuat tabel products
 CREATE TABLE products
 (
@@ -374,8 +376,14 @@ UPDATE products
 SET price = 500
 WHERE id = 'P0016';
 
+-- FULLTEXT Search (digunakan untuk mencari sebagian data di kolom dengan tipe data String, mirip seperti LIKE namun lebih cepat, karena FULLTEXT menggunakan INDEX)
+-- FULLTEXT nama_fitur (kolom1, kolom2)
+-- FULLTEXT ada tiga mode, NATURAL LANGUAGE MODE, BOOLEAN MODE, WITH QUERY EXPANSION
 ALTER TABLE products
     ADD FULLTEXT product_fulltext (name, description);
+
+ALTER TABLE products
+    DROP INDEX product_fulltext;
 
 SHOW CREATE TABLE products;
 
@@ -384,16 +392,19 @@ FROM products
 WHERE name LIKE '%ayam%'
    OR description LIKE '%ayam%';
 
+-- NATURAL LANGUAGE (mencari per kata)
 SELECT *
 FROM products
 WHERE MATCH(name, description)
             AGAINST('ayam' IN NATURAL LANGUAGE MODE);
 
+-- BOOLEAN (+ mencari yg mengandung kata, - mencari yg tidak mengandung kata)
 SELECT *
 FROM products
 WHERE MATCH(name, description)
             AGAINST('+ayam -bakso' IN BOOLEAN MODE);
 
+-- QUERY EXPANSION (seperti NATURAL LANGUAGE, namun melakukan pencarian dua kali, pencarian pertama menggunakan NATURAL LANGUAGE, pencarian kedua melakukan pencarian dari kedekatan hasil pertama)
 SELECT *
 FROM products
 WHERE MATCH(name, description)
@@ -406,7 +417,6 @@ FROM products;
 
 INSERT INTO products(id, name, category, price, quantity)
 VALUES ('Pxxxx', 'Contoh', 'Lain-Lain', 1000, 1000);
-
 
 INSERT INTO products(id, name, price, quantity)
 VALUES ('X0001', 'X Satu', 25000, 200),

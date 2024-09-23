@@ -1,3 +1,5 @@
+USE belajar_mysql;
+
 -- CONSTRAINT nama_constraint JENISCONSTRAINT (menambahkan validasi untuk setiap data yang masuk)
 -- UNIQUE (kolom)
 -- CHECK (kondisi)
