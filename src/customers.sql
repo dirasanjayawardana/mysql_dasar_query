@@ -3,6 +3,7 @@ USE belajar_mysql;
 -- CONSTRAINT nama_constraint JENISCONSTRAINT (menambahkan validasi untuk setiap data yang masuk)
 -- UNIQUE (kolom)
 -- CHECK (kondisi)
+-- FOREIGN KEY (kolom_fk) REFERENCES tabel_ref (kolom_ref)
 CREATE TABLE customers
 (
     id         INT          NOT NULL AUTO_INCREMENT,

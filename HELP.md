@@ -50,3 +50,4 @@
 - admin.sql
 - customers.sql
 - sellers.sql
+- relations/wishlist.sql

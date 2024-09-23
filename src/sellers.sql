@@ -17,7 +17,6 @@ CREATE TABLE sellers
 ) ENGINE = InnoDB;
 
 DESC sellers;
-
 SHOW CREATE TABLE sellers;
 
 SELECT * FROM sellers WHERE name = 'X';
