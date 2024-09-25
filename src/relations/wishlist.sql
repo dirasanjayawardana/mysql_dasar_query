@@ -69,7 +69,7 @@ WHERE id = 1;
 
 SELECT * FROM wishlist;
 
--- JOIN (untuk mengambil data dari beberapa tabel, dengan menentukan kolom yang menjadi referensi)
+-- JOIN (untuk mengambil data dari beberapa tabel, dengan menentukan kolom yang menjadi referensi di tabel lain)
 SELECT customers.email, products.id, products.name, wishlist.description
 FROM wishlist
 JOIN products ON (products.id = wishlist.id_product)
