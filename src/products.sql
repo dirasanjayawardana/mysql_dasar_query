@@ -423,6 +423,8 @@ VALUES ('X0001', 'X Satu', 25000, 200),
        ('X0002', 'X Dua', 10000, 300),
        ('X0003', 'X Tiga', 15000, 500);
 
+-- SubQuery (membuat query lain di dalam query utama)
+-- SubQuery bisa digunakan di WHERE maupun di FROM, sebagai pengganti data rujukan
 SELECT *
 FROM products
 WHERE price > (SELECT AVG(price) FROM products);
@@ -433,10 +435,12 @@ FROM products;
 SELECT *
 FROM products;
 
+-- SubQuery (membuat query lain di dalam query utama)
+-- SubQuery bisa digunakan di WHERE maupun di FROM, sebagai pengganti data rujukan
 SELECT MAX(cp.price)
 FROM (SELECT price
       FROM categories
-               JOIN products ON (products.id_category = categories.id)) as cp;
+      JOIN products ON (products.id_category = categories.id)) as cp;
 
 UPDATE products
 SET price=1000000
