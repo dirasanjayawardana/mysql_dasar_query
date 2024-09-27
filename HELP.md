@@ -42,12 +42,3 @@
 ### Tipe Data Boolean
 - `BOOLEAN` true or false, bisa juga TRUE or FALSE
 - Di MySQL tidak case sensitive
-
-
-## Learning
-- barang.sql
-- products.sql
-- admin.sql
-- customers.sql
-- sellers.sql
-- relations/wishlist.sql
