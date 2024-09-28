@@ -42,3 +42,13 @@
 ### Tipe Data Boolean
 - `BOOLEAN` true or false, bisa juga TRUE or FALSE
 - Di MySQL tidak case sensitive
+
+## User Management
+- Secara default, MySql akan membuat root user sebagai super administrator
+- Best Practice nya, tidak disarankan menggunakan user root, lebih baik menggunakan user yg didaftarkan berdasarkan hak akses
+- Ada banyak sekali macam-macam hak akses yg disediakan oleh MySql, bisa dilihat di cokumentasi MySql
+
+### Membuat/Menghapus User
+- Membuat User dengan perintah `CREATE USER 'namauser'@'localhost';` ini berarti user bisa mengakses database hanya dari `localhost`
+- Membuat User dengan perintah `CREATE USER 'namauser'@'%';` ini berarti user bisa mengakses database dari manapun
+- Menghapus User dengan perintah `DROP USER 'namauser'@'localhost';` atau `DROP USER 'namauser'@'%';`

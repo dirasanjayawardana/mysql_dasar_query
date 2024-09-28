@@ -4,7 +4,7 @@ USE belajar_mysql;
 -- Saat melakukan proses TRANSACTION, data yang diubah otomatis akan di LOCK sampai melakukan COMMIT atau ROLLBACK
 -- Untuk melakukan LOCKING secara manual untuk proses SELECT, bisa menggunakan perintah FOR UPDATE dibelakang query SELECT
 
-START TRANSACTION ;
+START TRANSACTION;
 
 SELECT * FROM guestbooks;
 
