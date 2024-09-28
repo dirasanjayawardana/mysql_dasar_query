@@ -29,7 +29,7 @@ WHERE id = 'P0001';
 
 COMMIT ;
 
-#  DEADLOCK (situasi dimana dua proses saling menunggu, namun data yg ditunggu dua-duanya di lock oleh proses lain, sehingga proses menunggu tidak akan pernah selesai)
+-- DEADLOCK (situasi dimana dua proses saling menunggu, namun data yg ditunggu dua-duanya di lock oleh proses lain, sehingga proses menunggu tidak akan pernah selesai)
 
 START TRANSACTION ;
 
@@ -37,7 +37,9 @@ SELECT * FROM products WHERE id = 'P0002' FOR UPDATE ;
 
 SELECT * FROM products WHERE id = 'P0001' FOR UPDATE ;
 
-# LOCK TABLE READ
+
+-- LOCK TABLE melakukan LOCKING untuk seluruh data di dalam tabel
+-- LOCK TABLE READ (hanya bisa melakukan read data tabel, proses lain juga hanya bisa read dan tidak bisa write)
 
 SELECT * FROM products;
 
@@ -45,11 +47,11 @@ UPDATE products
 SET quantity = 100
 WHERE id = 'P0001';
 
-# LOCK TABLE WRITE
+-- LOCK TABLE WRITE (bisa melakukan read dan write data tabel, proses lain tidak bisa read dan write)
 
 SELECT * FROM products;
 
-# LOCK INSTANCE
+-- LOCK INSTANCE (melakukan locking untuk perintah DDL(data definition language) atau edit tabel harus menunggu sampai proses UNLOCK INSTANCE)
 
 ALTER TABLE products
 ADD column sample VARCHAR(100);
