@@ -52,3 +52,12 @@
 - Membuat User dengan perintah `CREATE USER 'namauser'@'localhost';` ini berarti user bisa mengakses database hanya dari `localhost`
 - Membuat User dengan perintah `CREATE USER 'namauser'@'%';` ini berarti user bisa mengakses database dari manapun
 - Menghapus User dengan perintah `DROP USER 'namauser'@'localhost';` atau `DROP USER 'namauser'@'%';`
+
+## Backup Database
+- MySql menyediakan `mysqldump` di dalam folder bin, yg bisa digunakan untuk melakukan backup database
+- menggunakan perintah `./bin/mysqldump nama_database --user root --password --result-file=/lokasi/penyimpanan/backup.sql`
+- Hasil backup berupa file sql yang berisi perintah sql
+
+## Restore Database
+- Untuk restore database bisa menggunakan `./bin/mysql --user=root --password nama_database < /Lokasi/File/backup.sql`
+- Cara lain restore database bisa menggunakan `SOURCE /Lokasi/File/Backup.sql`, pastikan sudah membuat database baru untuk menyimpan hasil restore
